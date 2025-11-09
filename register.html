@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css">
     <link rel="stylesheet" href="./src/styles/style.css">
     <link rel="stylesheet" href="./src/styles/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
     <title>Login do Site</title>
 </head>
 
@@ -15,13 +17,12 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="login-form">
+                <div class="registerForm">
                     <form>
-
                         <h1>Register</h1>
-                        <div class="inputform">
-                            <label for="email">Nome</label>
-                            <input type="email" class="form-control mb-2" name="email" id="email" placeholder="Digite seu Email"
+                        <div class="inputorm">
+                            <label for="name">Nome</label>
+                            <input type="text" class="form-control mb-2" name="name" id="name" placeholder="Digite seu Nome"
                                 required>
                         </div>
                         <div class="inputform">
@@ -30,13 +31,13 @@
                                 required>
                         </div>
                         <div class="inputform">
-                            <label for="password">Senhas</label>
+                            <label for="password">Senha</label>
                             <input type="password" class="form-control" name="password" id="password" placeholder="Digite sua Senha"
                                 required>
                         </div>
-                        <button class="btn mt-3" type="submit">Sign-in</button>
+                        <button class="btn mt-3" type="submit">Register</button>
                         <div class="remember-forgot">
-                            <p class="fw-medium">Already has an account? <a class="fw-bolder" href="login.html">Login</a></p>
+                            <p class="fw-medium">Already has an account? <a class="fw-bolder" id="register" href="login.html">Login</a></p>
                         </div>
                     </form>
                 </div>
@@ -48,7 +49,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"></script>
-    <script src="index.js"></script>
+    <script src="./src/index.js" defer></script>
 
 </body>
 

@@ -14,7 +14,7 @@ body {
     align-items: center;
   }
   
-.login-form {
+.loginForm {
     width: 390px; /* tamanho da caixa de texto */
     padding: 40px; /* tamanho do form do login */
     border-radius: 20px; /* raio da borda */
@@ -23,7 +23,20 @@ body {
     animation: form-trans .6s forwards;
     transform: scale3D(1.5);
 }
-.login-form h1, p {
+.loginForm h1, p {
+    transition: all .3s ease-in-out;
+    color: rgb(145, 135, 209)
+}
+.registerForm {
+    width: 390px; /* tamanho da caixa de texto */
+    padding: 40px; /* tamanho do form do login */
+    border-radius: 20px; /* raio da borda */
+    background: rgba(255, 255, 255, 0.2);  /* Fundo translúcido com blur */
+    transition: all .5s ease-in .5s;
+    animation: form-trans .6s forwards;
+    transform: scale3D(1.5);
+}
+.registerForm h1, p {
     transition: all .3s ease-in-out;
     color: rgb(145, 135, 209)
 }
@@ -54,4 +67,22 @@ transition: all .5s ease-in ;
     to{
         transform: translate(30%) ;
     }
+}
+.eye-btn {
+  position: absolute;
+  right: 5px;
+  top: 70%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6c757d;
+  font-size: 18px;
+  transition: color 0.2s ease;
+}
+.eye-btn:hover {
+  color: #000;
+}
+.error-msg {
+      color: red;
+      display: block;
+      margin-top: 4px;
 }
