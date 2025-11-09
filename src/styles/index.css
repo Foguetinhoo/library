@@ -1,0 +1,57 @@
+body {
+    /* Fundo */
+    background-image: url('../assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    /* Centraliza o bloco de login*/
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.login-form {
+    width: 390px; /* tamanho da caixa de texto */
+    padding: 40px; /* tamanho do form do login */
+    border-radius: 20px; /* raio da borda */
+    background: rgba(255, 255, 255, 0.2);  /* Fundo translúcido com blur */
+    transition: all .5s ease-in .5s;
+    animation: form-trans .6s forwards;
+    transform: scale3D(1.5);
+}
+.login-form h1, p {
+    transition: all .3s ease-in-out;
+    color: rgb(145, 135, 209)
+}
+
+input {
+    background: rgba(255, 255, 255, 0.1)!important;
+    border: 0!important;
+}
+.btn{
+    width: 100%;
+    background-color: rgb(148, 94, 199);
+}
+.btn:hover{
+    background-color: rgb(129, 67, 187);
+    transition: all .4s ease-in;
+
+    
+}
+#register{
+    color: rgba(255, 255, 255, 0.2);
+}
+#register:hover{ 
+    color: rgb(148, 94, 199);
+transition: all .5s ease-in ;
+}
+  
+@keyframes form-trans{
+    to{
+        transform: translate(30%) ;
+    }
+}

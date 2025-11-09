@@ -1,0 +1,12 @@
+body{
+     background-color: rgb(204, 173, 233);
+}
+#sidebar{
+    width: 200px;
+    background:  rgb(148, 94, 199);
+    height:100vh;
+}
+#user{
+    width: 35px;
+    border-radius: 50%;
+}
