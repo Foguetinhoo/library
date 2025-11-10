@@ -39,8 +39,32 @@
 .fs-1{
     color: white;
 }
+.alert{
+    display: block;
+    transition: all .4s ease-in;
+    transition-delay: .3s;
+    animation: fade .5s linear;
+}
+.exit{
+    display: none;
+    transition: all .4s ease-in;
+    transition-delay: .3s;
+    animation: fade .5s linear;
+}
 @keyframes loading{
     to{
         transform: rotate(360deg);
     }
+}
+@keyframes fade {
+    from{
+        transform: translateX(-100px) scale(1.5);
+        
+        opacity: .2;
+    }
+    to{
+        transform: translateX(50px);
+        opacity: .9;
+    }
+    
 }
