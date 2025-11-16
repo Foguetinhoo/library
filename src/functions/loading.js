@@ -19,7 +19,6 @@ const loading = (page, reload = false) => {
 
         }, 1500)
 
-
 }
 
 export { loading }

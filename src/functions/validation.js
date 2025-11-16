@@ -1,27 +1,41 @@
-import { loginUser } from "./createuser.js"
+import { loginUser, verifyUser } from "./createuser.js"
 import { createMessages } from "./messages.js"
 
-const validLogin = (emailInp, passInp, islogin = true) => {
+const validData = (emailInp, passInp, islogin = true) => {
     try {
-        const { name, email, password } = loginUser()
-        if (!islogin) {
-            console.log(emailInp,email)
-            if (emailInp == email)
+        const data = verifyUser()
+        console.log('islogin =>', islogin)
+        if (islogin == false) {
+            if (emailInp == data.email)
                 return {
                     message: "Usuário ja cadastrado",
                     type: 'error'
                 }
-        }
-        else {
-            if (emailInp != email || passInp != password)
-                return {
-                    message: "Email e/ou senha invalido(s)",
-                    type: 'error'
-                }
+
             return {
-                message: `Seja bem vindo ${name}`,
+                message: `Usuário criado com sucesso`,
                 type: 'success'
             }
+        }
+        else {
+            let found_user = 0
+            data.forEach(element => {
+                if (element.email == emailInp && element.password == passInp) found_user++
+            })
+            if (found_user == 1) {
+                return {
+                    message: "Sucesso",
+                    type: 'success'
+                }
+            }
+            else {
+                return {
+                    message: `Usuário não encontrado`,
+                    type: 'error'
+                }
+            }
+
+
         }
     } catch (e) {
         console.log(e)
@@ -29,4 +43,4 @@ const validLogin = (emailInp, passInp, islogin = true) => {
     }
 }
 
-export { validLogin }
+export { validData }

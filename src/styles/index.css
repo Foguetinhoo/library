@@ -47,7 +47,7 @@ input {
 }
 .btn{
     width: 100%;
-    background-color: rgb(148, 94, 199);
+    background-color: rgb(148, 94, 199) !important;
 }
 .btn:hover{
     background-color: rgb(129, 67, 187);

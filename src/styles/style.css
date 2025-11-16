@@ -8,14 +8,6 @@
     outline: none;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: 0;
-    text-decoration: none !important;
-    user-select: none;
-    outline: none;
-}
 .fa-spinner{
     animation: loading 1s linear infinite;
         color: white;
