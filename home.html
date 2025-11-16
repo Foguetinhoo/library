@@ -20,7 +20,7 @@
                 <a href="#" class="nav-item">Home</a>
             </li>
             <li>
-                <a href="#" class="nav-item">Adicionar livro</a>
+                <a href="#" class="nav-item" data-bs-toggle="modal" data-bs-target="#add-livro">Adicionar livro</a>
             </li>
             <!-- <li>
             <a href="#" class="nav-item"></a>
@@ -37,9 +37,51 @@
                     <a href="#" class="dropdown-item">Configurações</a>
                 </li>
                 <li>
-                    <a id="logoutbtn" class="dropdown-item">Logout <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                    <a id="logoutbtn" class="dropdown-item">Logout <i
+                            class="fa-solid fa-arrow-right-to-bracket"></i></a>
                 </li>
             </ul>
+        </div>
+        <div class="container-fluid">
+            <div class="modal" id="add-livro" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Adicionar Livro</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="input-form d-flex justify-content-center">
+                                    <input type="search" class="form-control w-75 mb-3" id="search-book"
+                                        placeholder="Digite o nome do livro...">
+                                </div>
+                                <div class="input-form d-flex justify-content-center">
+                                    <input type="text" class="form-control w-75" readonly id="name-book">
+                                </div>
+                                <div class="input-form d-flex justify-content-center  mb-3">
+                                    <img alt="">
+                                </div>
+                                <div class="input-form d-flex justify-content-center">
+                                    <input type="date" class="form-control w-75 mb-3" min="16-11-2025" name="data-inicio"
+                                        id="data-inicio" required>
+                                </div>
+                                <div class="input-form d-flex justify-content-center">
+                                    <input type="date" class="form-control w-75" name="data-fim" id="data-fim" required>
+                                </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close <i
+                                    class="fa-solid fa-x"></i></button>
+                            <button type="submit" class="btn btn-success">Adicionar livro <i
+                                    class="fa-solid fa-check"></i></button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"></script>

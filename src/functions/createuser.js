@@ -10,9 +10,9 @@ const loginUser = () => {
     }
 }
 
-const verifyUser = () =>{
-    const data = JSON.parse(sessionStorage.getItem('user')) || []
-    return data
+const listUser = () =>{
+    const data = sessionStorage.getItem('user')
+    return JSON.parse(data)
 }
 // fun  ção para criar o usuário no session Storage
 const createUser = (name,email,password) =>{
@@ -26,7 +26,7 @@ const createUser = (name,email,password) =>{
     location.assign('login.html')
 }
 
-export {createUser,loginUser,verifyUser}
+export {createUser,loginUser,listUser}
 
 
 
