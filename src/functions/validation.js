@@ -4,19 +4,19 @@ import { createMessages } from "./messages.js"
 const validData = (emailInp, passInp, islogin = true) => {
     try {
         const data = listUser() || []
+        console.log(data)
         if (islogin == false) {
-            const email = data.filter(user=> user?.email == emailInp)
-            console.log(email)
-            if (email.length)
+            const email = data.filter(user=> user.email == emailInp) 
+            if (!email.length)
+                return {
+                    message: `Usuário criado com sucesso`,
+                    type: 'success'
+                }
+                
                 return {
                     message: "Usuário ja cadastrado",
                     type: 'error'
                 }
-
-            return {
-                message: `Usuário criado com sucesso`,
-                type: 'success'
-            }
         }
         else {
             let found_user = 0
@@ -35,8 +35,6 @@ const validData = (emailInp, passInp, islogin = true) => {
                     type: 'error'
                 }
             }
-
-
         }
     } catch (e) {
         console.log(e)

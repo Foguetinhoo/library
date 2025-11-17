@@ -14,13 +14,14 @@
 
 <body>
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white" id="sidebar">
-        <a class="navbar-brand" href="#">Logo</a>
+        <a class="navbar-brand" href="#"><i class="fa-solid fa-book"></i> Library</a>
         <ul class="nav nav-pills flex-column mb-auto mt-3">
             <li>
-                <a href="#" class="nav-item">Home</a>
+                <a href="#" class="nav-item">Livros</a>
             </li>
             <li>
-                <a href="#" class="nav-item" data-bs-toggle="modal" data-bs-target="#add-livro">Adicionar livro</a>
+                <a href="#" class="nav-item" id="add-book" data-bs-toggle="modal" data-bs-target="#add-livro">Adicionar
+                    livro</a>
             </li>
             <!-- <li>
             <a href="#" class="nav-item"></a>
@@ -28,60 +29,82 @@
         </ul>
         <hr>
         <div class="btn-group dropup  align-items-start j">
-            <span class="user"></span>
+          
             <a type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <img class="img-fluid img-thumbnail" id="user" alt="user">
+                  <span class="user"></span>
             </a>
             <ul class="dropdown-menu">
                 <li>
                     <a href="#" class="dropdown-item">Configurações</a>
                 </li>
                 <li>
-                    <a id="logoutbtn" class="dropdown-item">Logout <i
+                    <a class="dropdown-item" data-bs-toggle="modal" id="log" data-bs-target="#logout">Logout <i
                             class="fa-solid fa-arrow-right-to-bracket"></i></a>
                 </li>
             </ul>
         </div>
         <div class="container-fluid">
-            <div class="modal" id="add-livro" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Adicionar Livro</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="input-form d-flex justify-content-center">
-                                    <input type="search" class="form-control w-75 mb-3" id="search-book"
-                                        placeholder="Digite o nome do livro...">
-                                </div>
-                                <div class="input-form d-flex justify-content-center">
-                                    <input type="text" class="form-control w-75" readonly id="name-book">
-                                </div>
-                                <div class="input-form d-flex justify-content-center  mb-3">
-                                    <img alt="">
-                                </div>
-                                <div class="input-form d-flex justify-content-center">
-                                    <input type="date" class="form-control w-75 mb-3" min="16-11-2025" name="data-inicio"
-                                        id="data-inicio" required>
-                                </div>
-                                <div class="input-form d-flex justify-content-center">
-                                    <input type="date" class="form-control w-75" name="data-fim" id="data-fim" required>
-                                </div>
 
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close <i
-                                    class="fa-solid fa-x"></i></button>
-                            <button type="submit" class="btn btn-success">Adicionar livro <i
-                                    class="fa-solid fa-check"></i></button>
-                        </div>
-                        </form>
+
+        </div>
+        <!-- modais criados para logout e adicionar livro -->
+        <div class="modal fade" id="logout" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Logout</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Deseja realmente sair <i class="fa-solid fa-question"></i>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" id="logoutbtn" >Confirmar <i class="fa-solid fa-check"></i></button>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="modal fade" id="add-livro" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Adicionar Livro</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="input-form d-flex justify-content-center">
+                                <input type="search" class="form-control w-75 mb-3" id="search-book"
+                                    placeholder="Digite o nome do livro...">
+                            </div>
+                            <div class="input-form d-flex justify-content-center">
+                                <input type="text" class="form-control w-75" readonly id="name-book">
+                            </div>
+                            <div class="input-form d-flex justify-content-center align-items-center  mb-3">
+                                <img class="img-thumbnail">
+                            </div>
+                            <div class="input-form d-flex justify-content-center">
+                                <input type="date" class="form-control w-75 mb-3" 
+                                min="16-11-2025" name="data-inicio"
+                                id="data-inicio" value="11-11-2025" required>
+                            </div>
+                            <div class="input-form d-flex justify-content-center">
+                                <input type="date" class="form-control w-75" name="data-fim" id="data-fim" required>
+                            </div>
 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close <i
+                                class="fa-solid fa-x"></i></button>
+                        <button type="submit" class="btn btn-success">Adicionar livro <i
+                                class="fa-solid fa-check"></i></button>
+                    </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"></script>

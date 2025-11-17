@@ -1,3 +1,8 @@
+*{
+    outline: none !important;
+    user-select: none !important;
+    text-decoration: none !important;
+}
 body{
      background-color: rgb(204, 173, 233);
      transition:display 1s ease-in ;
@@ -11,4 +16,7 @@ body{
 #user{
     width: 35px;
     border-radius: 50%;
+}
+#log{
+    cursor: pointer;
 }

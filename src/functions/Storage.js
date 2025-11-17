@@ -16,8 +16,17 @@ class StorageL  extends J{
     }
     // Metodo para salva item no local ou session
     saveItem(name,data){
+        console.log('save',data)
        this.type == 'session' ? sessionStorage.setItem(name,this.stringfyData(data))
         : localStorage.setItem(name,this.stringfyData(data))
+    }
+    clearItem(){
+       this.type == 'session' ? sessionStorage.clear()
+        : localStorage.clear()
+    }
+    removeItem(name){
+        this.type == 'session' ? sessionStorage.removeItem(name)
+        : localStorage.removeItem(name)
     }
 }
 

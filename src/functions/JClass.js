@@ -2,7 +2,7 @@ class J{
     parseData(data){
         return JSON.parse(data)
     }
-    stringfyData(){
+    stringfyData(data){
         return JSON.stringify(data)
     }
 }   
