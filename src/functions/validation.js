@@ -1,12 +1,13 @@
-import { loginUser, verifyUser } from "./createuser.js"
+import { listUser} from "./createuser.js"
 import { createMessages } from "./messages.js"
 
 const validData = (emailInp, passInp, islogin = true) => {
     try {
-        const data = verifyUser()
-        console.log('islogin =>', islogin)
+        const data = listUser() || []
         if (islogin == false) {
-            if (emailInp == data.email)
+            const email = data.filter(user=> user?.email == emailInp)
+            console.log(email)
+            if (email.length)
                 return {
                     message: "Usuário ja cadastrado",
                     type: 'error'

@@ -1,8 +1,4 @@
-
-
 const loading = (page, reload = false) => {
-    const isLoading = sessionStorage.getItem("loading")
-
         document.body.innerHTML = ""
         const div = document.createElement("div")
         div.classList.add("loading-div")

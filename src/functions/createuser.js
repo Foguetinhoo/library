@@ -1,32 +1,26 @@
-
-const loginUser = () => {
-    const data = JSON.parse(sessionStorage.getItem('user'))
-    const {name,email,password} = data
-
-    return {
-        name,
-        email,
-        password
-    }
-}
+import { StorageL } from "./Storage.js"
 
 const listUser = () =>{
-    const data = sessionStorage.getItem('user')
-    return JSON.parse(data)
+    const storage  = new StorageL('local')
+
+    const data = storage.getItem('user')
+    return data
 }
 // fun  ção para criar o usuário no session Storage
 const createUser = (name,email,password) =>{
-    let userdata = JSON.parse(sessionStorage.getItem('user')) ||[]
+    
+    let userdata = listUser() ||[]
     let newuser = []
+    let oldId = userdata.findLast(element => element?.id) || null
+    let id = !oldId ? 1 : oldId.id + 1
 
-    newuser.push({name, email, password},...userdata)
-
-    sessionStorage.setItem("loading",true)
-    sessionStorage.setItem("user", JSON.stringify(newuser));
+    newuser.push({id,name, email, password},...userdata)
+    const storage  = new StorageL('local')
+    storage.saveItem('user',newuser)
     location.assign('login.html')
 }
 
-export {createUser,loginUser,listUser}
+export {createUser,listUser}
 
 
 

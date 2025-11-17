@@ -1,4 +1,4 @@
-import { createUser, verifyUser } from "./functions/createuser.js";
+import { createUser} from "./functions/createuser.js";
 import { createMessages } from "./functions/messages.js";
 import { validData } from "./functions/validation.js";
 
@@ -9,6 +9,7 @@ const _password = document.getElementById("password");
 
 registerForm.addEventListener("submit", (event) => {
   try {
+    // Previne que o formulário tenha o comportamento padrão
     event.preventDefault();
     // recebendo os valores e tirando os espaços antes e depois
     const name = _name.value.trim();
@@ -16,7 +17,7 @@ registerForm.addEventListener("submit", (event) => {
     const password = _password.value.trim();
 
     const  response = validData(email,password,false)
-    console.log(response)
+  
     if (response.type == 'success') {
         createUser(name,email,password)
         setTimeout(() => location.assign('login.html'),2500)
@@ -25,7 +26,7 @@ registerForm.addEventListener("submit", (event) => {
 
   createMessages(registerForm,response?.message,response?.type)
     // passo para a função que é responsável por criar e redirecionar]
-    console.log(response)
+   
   } catch (e) {
     console.log(e)
     createMessages(registerForm, 'Erro ao registrar', 'warning')
