@@ -9,9 +9,12 @@ body{
      transition-delay: 1s;
 }
 #sidebar{
-    width: 200px;
+    width: 250px;
     background:  rgb(148, 94, 199);
     height:100vh;
+    position: relative;
+    left: -12px;
+    padding: 10px;
 }
 #user{
     width: 35px;
@@ -19,4 +22,19 @@ body{
 }
 #log{
     cursor: pointer;
+}
+
+.card{
+    height: 50%;
+    width: 14rem;
+}
+.card-img-top{
+  width: 70%;
+  height: 100%;
+    object-fit: cover; /* Fills the container, cropping if needed */
+  object-position: center; /* Centers the image within the container */
+
+}
+.caroul{
+    
 }
