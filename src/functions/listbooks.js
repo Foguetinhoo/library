@@ -1,0 +1,113 @@
+import { books } from "./books.js"
+import { listBooks } from "./createdrentedbook.js"
+import { listUser } from "./createuser.js"
+
+//  <a href="#" class="btn btn-primary"  data-bs-toggle="modal"
+//                                 data-bs-target="#add-livro">Alugar <i class="fa-solid fa-bookmark"></i></a>
+//                             </div>    
+const listbooks = (element, data) => {
+
+
+    //array dos livros cadastrados para gerar a lista em html
+    for (const book of data) {
+        // crio os elementos que vão fazer parte do cartão e suas respectivas propriedades
+        const form = document.createElement('form')
+        form.id = book.id
+        form.addEventListener('submit', atrib)
+        const card = document.createElement("div")
+        card.classList.add('card')
+        card.id = book.id
+        const card_image = document.createElement("img")
+        card_image.classList.add('card-img-top')
+        card_image.src = book.img_src
+        card_image.alt = 'Book'
+        const card_body = document.createElement("div")
+        card_body.classList.add("card-body")
+        const card_title = document.createElement("h6")
+        card_title.classList.add('card-title', 'fw-medium')
+        card_title.innerHTML = book.title_book
+        const card_sub = document.createElement("p")
+        card_sub.classList.add("card-subtitle", "fst-italic")
+        card_sub.innerHTML = book.author
+        const card_text = document.createElement("span")
+        card_text.classList.add('card-text')
+        card_text.innerHTML = `Publicado em ${book.year_pub}`
+        const card_footer = document.createElement("div")
+        card_footer.classList.add('card-footer')
+        const card_button = document.createElement("button")
+        card_button.href = "#"
+        card_button.classList.add('btn', 'btn-primary')
+        card_button.id = "book_al"
+        card_button.setAttribute('type', 'submit')
+        card_button.setAttribute('data-bs-toggle', 'modal')
+        card_button.setAttribute('data-bs-target', "#add-livro")
+        card_button.innerHTML = 'Alugar <i class="fa-solid fa-bookmark"></i>'
+
+        card_footer.append(card_button)
+        card_body.append(card_title, card_sub, card_text, card_footer)
+        form.append(card_image, card_body)
+        card.append(form)
+        element.append(card)
+
+    }
+}
+
+function atrib(e) {
+    e.preventDefault()
+    const id_book = document.querySelector('.id')
+    id_book.innerHTML = e.target.id
+}
+
+function listBooksRented(element) {
+    const booksrents = listBooks()
+    const user = listUser()
+    const bookR = books
+    console.log(booksrents)
+    //array dos livros cadastrados para gerar a lista em html
+    for (const book of booksrents) {
+        // crio os elementos que vão fazer parte do cartão e suas respectivas propriedades
+        const form = document.createElement('form')
+        form.id = book.id_rented
+        // form.addEventListener('submit',atrib)
+        const card = document.createElement("div")
+        card.classList.add('card')
+        card.id = book.id_rented
+        const card_image = document.createElement("img")
+        card_image.classList.add('card-img-top')
+
+        const [book_rent] = bookR.filter(element => element.id == book.id_book)
+
+        card_image.src = book_rent.img_src
+        card_image.alt = 'Book'
+     const [user_alug] = user.filter(user => user.id == book.id_user)
+        const card_body = document.createElement("div")
+        card_body.classList.add("card-body")
+        const card_title = document.createElement("h6")
+        card_title.classList.add('card-title', 'fw-medium')
+        card_title.innerHTML = book_rent.title_book
+        const card_sub = document.createElement("p")
+        card_sub.classList.add("card-subtitle", "fst-italic")
+        card_sub.innerHTML = `Por ${user_alug.name}`
+        const card_text = document.createElement('small')
+        card_text.classList.add('card-text')
+        card_text.innerHTML = `Alugado em ${book.data_aluguel}`
+        const card_footer = document.createElement("div")
+        card_footer.classList.add('card-footer')
+        const date_element = document.createElement('small')
+        date_element.innerHTML = `Devolução em: ${book.data_fim}`
+        const card_button = document.createElement("button")
+        // card_button.href = "#"
+        // card_button.classList.add('btn', 'danger')
+        // card_button.id = "book_al"
+        // card_button.innerHTML = 'Alugar <i class="fa-solid fa-bookmark"></i>'
+
+        card_footer.append(card_button)
+        card_body.append(card_title, card_sub, card_text, card_footer,date_element)
+        form.append(card_image, card_body)
+        card.append(form)
+        element.append(card)
+
+    }
+}
+
+export { listbooks, atrib, listBooksRented }

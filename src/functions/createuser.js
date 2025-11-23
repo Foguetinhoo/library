@@ -12,7 +12,7 @@ const createUser = (name,email,password) =>{
     let oldId = userdata.findLast(element => element?.id) || null
     let id = !oldId ? 1 : oldId.id + 1
 
-    newuser.push({id,name, email, password},...userdata)
+    newuser.push(...userdata,{id,name, email, password})
     
     const storage  = new StorageL('local')
     storage.saveItem('user',newuser)

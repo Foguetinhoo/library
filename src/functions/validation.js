@@ -42,4 +42,41 @@ const validData = (emailInp, passInp, islogin = true) => {
     }
 }
 
-export { validData }
+const validDate = (date) => {
+    try {
+       const today = new Date();
+    
+    // Opcional: Zerar as horas/minutos/segundos de hoje para comparar apenas as datas (dia, mês, ano)
+    today.setHours(0, 0, 0, 0);
+
+    // 2. Criar um objeto Date a partir da string de input
+    // O construtor Date() lida bem com o formato YYYY-MM-DD de inputs HTML
+    const dataInput = new Date(date);
+
+    // Opcional: Zerar as horas/minutos/segundos da data de input para comparação justa
+    dataInput.setHours(0, 0, 0, 0);
+
+    // 3. Validar se a data de input é válida
+    if (isNaN(dataInput.getTime())) {
+        return {  type: 'error', 
+            message: "Data invalida tente novamente" };
+    }
+
+    // 4. Comparar as datas usando o operador '<'
+    if (dataInput < today) {
+        return { 
+            type: 'error', 
+            message: "Informe uma data maior que hoje" 
+        };
+    } 
+    return {
+        type:'success',
+        message:'Livro alugado'
+    }
+    
+    } catch (e) {
+        console.log(e)
+        createMessages(document.body, e.message, 'error')
+    }
+}
+export { validData,validDate }
