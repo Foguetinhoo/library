@@ -87,16 +87,16 @@ function listBooksRented(element) {
         card_sub.innerHTML = `por ${user_alug.name}`
         const card_text = document.createElement('small')
         card_text.classList.add('card-text')
-        card_text.innerHTML = `<i class="fa-solid fa-calendar-plus"></i> ${format(book.data_fim)}`
+        card_text.innerHTML = `<i class="fa-solid fa-calendar-plus"></i> ${format(book.data_aluguel)} `
         const card_footer = document.createElement("div")
         card_footer.classList.add('card-footer')
         const date_element = document.createElement('small')
         date_element.classList.add('fst-italic')
-        date_element.innerHTML = `<i class="fa-solid fa-calendar-days"></i> ${format(book.data_aluguel)} `
-        const falt = quant(book.data_aluguel, book.data_aluguel)
+        date_element.innerHTML = `<i class="fa-solid fa-calendar-days"></i>  ${format(book.data_fim)}`
+        const falt = quant(book.data_aluguel,book.data_fim,)
         const sm = document.createElement('p')
         sm.classList.add('fw-lighter')
-        sm.innerHTML = `Devolução em ${falt} dias <i class="fa-regular fa-clock"></i>`
+        sm.innerHTML = `<i class="fa-regular fa-clock"></i> Devolução em ${falt} dias `
 
         card_footer.append(sm)
         card_body.append(card_title,card_sub, card_text,date_element)

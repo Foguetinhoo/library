@@ -1,5 +1,6 @@
 import { books } from "./books.js";
 import { createRentedbBook } from "./createdrentedbook.js";
+import { dateAtual } from "./dateformat.js";
 import { createMessages } from "./messages.js";
 import { StorageL } from "./Storage.js";
 import { validDate } from "./validation.js";
@@ -31,7 +32,6 @@ function observ(element) {
         name_book.value = title_book
         elementoAlvo.addEventListener("submit", e => {
           e.preventDefault()
-          const date = new Date()
           const data_fim = document.querySelector('#data-fim')
           const valid = validDate(data_fim.value)
           const [{ id }] = user
@@ -40,7 +40,8 @@ function observ(element) {
 
               id_user: id,
               id_book: Number(id_book.innerHTML),
-              data_aluguel: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
+              data_aluguel: dateAtual(),
+              // data_aluguel: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
               data_fim: data_fim.value,
             }
             createRentedbBook(data)
