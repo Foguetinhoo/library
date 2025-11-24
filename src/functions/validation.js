@@ -63,7 +63,7 @@ const validDate = (date) => {
     }
 
     // 4. Comparar as datas usando o operador '<'
-    if (dataInput < today) {
+    if (dataInput <= today) {
         return { 
             type: 'error', 
             message: "Informe uma data maior que hoje" 
