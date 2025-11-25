@@ -1,51 +1,48 @@
-// importando a função do loading de outro arquivo
+// importando a funções de outros arquivos
 import { books } from "./functions/books.js"
+import { changePerfil } from "./functions/changeperfil.js"
 import { J } from "./functions/JClass.js"
+import { atrib, listbooks } from "./functions/listbooks.js"
 import { loading } from "./functions/loading.js"
 import { createMessages } from "./functions/messages.js"
+import { observ } from "./functions/observer.js"
 import { StorageL } from "./functions/Storage.js"
+
 //verifica se ha usuário logado
 const isLogged = new StorageL('session').getItem('user_logged') || null
 if (!isLogged) loading('login')
 //Declaração de variáveis e atribuição das mesmas
-const data_inicio = document.querySelector('#data-inicio')
+const modal = document.querySelector('#add-livro')
+//função para observar o modal enquanto é exibido
+observ(modal)
 
-const data_fim = document.querySelector('#data-fim')
+changePerfil()
 const imageUser = document.querySelector("#user")
-const logoutBtn = document.getElementById('logoutbtn');
+const logoutBtn = document.getElementById('logout_btn');
 const user = document.querySelector('.user')
-const search_book = document.getElementById('search-book')
-const book_name = document.getElementById('name-book')
-const add_modal = document.querySelector('#add-livro')
-const img_book = document.getElementById('img_book')
+const booksELement = document.querySelector('.books')
 
 // Desestruturando  o nome do usuario ao html
-const [{ name }] = isLogged
+const [{ name,img_user }] = isLogged
 user.innerHTML = name || 'Convidado'
-
 //criando a varíavel da imagem e atribuindo um source dinamico
 const srcDefault = "./src/assets/User_Icon.png"
-imageUser.src = imageUser.attributes.getNamedItem('src') || srcDefault
-
-search_book.addEventListener('keypress', async function (e) {
-  try {
-    
-
-  } catch (e) {
-    createMessages(add_modal, e, 'error')
-  }
+imageUser.src = img_user || srcDefault
+// deslogar o usuario
+logoutBtn.addEventListener('click', e => {
+  e.preventDefault()
+  loading('login')
+  new StorageL('session').clearItem()
 })
-// logoutBtn.addEventListener('click', (e) => {
-//   e.preventDefault(); // impede o link de mudar antes da limpeza
-//   // apaga todos os dados salvos
-//   new StorageL('session').clearItem()
-//   loading('login') // redireciona pro login
-// });
 
-$('.carous').slick({
+listbooks(booksELement, books)
+$('.books').slick({
+  speed: 500,
   dots: true,
   infinite: true,
-  speed: 500,
-  slidesToShow: 5,
-  slidesToScroll: 5,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  autoplay: true,
+  autoplaySpeed: 2000,
+
 });

@@ -7,7 +7,11 @@
     user-select: none;
     outline: none;
 }
-
+body {
+    background-color: rgb(204, 173, 233);
+    transition: display 1s ease-in;
+    transition-delay: 1s;
+}
 .fa-spinner{
     animation: loading 1s linear infinite;
         color: white;
@@ -42,6 +46,28 @@
     transition: all .4s ease-in;
     transition-delay: .3s;
     animation: fade .5s linear;
+}
+#sidebar {
+    width: 220px;
+    background: rgb(148, 94, 199);
+    height: 100vh;
+    position: fixed;
+    left: -10px;
+    padding: 10px 20px;
+}
+
+#user {
+    width: 35px;
+    border-radius: 50%;
+}
+#file_perfil{
+    display: none;
+}
+#input_group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 @keyframes loading{
     to{

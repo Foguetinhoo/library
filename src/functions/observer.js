@@ -37,11 +37,9 @@ function observ(element) {
           const [{ id }] = user
           if (valid.type == 'success') {
             const data = {
-
               id_user: id,
               id_book: Number(id_book.innerHTML),
               data_aluguel: dateAtual(),
-              // data_aluguel: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
               data_fim: data_fim.value,
             }
             createRentedbBook(data)

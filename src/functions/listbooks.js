@@ -3,11 +3,7 @@ import { listBooks } from "./createdrentedbook.js"
 import { listUser } from "./createuser.js"
 import { format, quant } from "./dateformat.js"
 
-//  <a href="#" class="btn btn-primary"  data-bs-toggle="modal"
-//                                 data-bs-target="#add-livro">Alugar <i class="fa-solid fa-bookmark"></i></a>
-//                             </div>    
 const listbooks = (element, data) => {
-
 
     //array dos livros cadastrados para gerar a lista em html
     for (const book of data) {
@@ -49,7 +45,6 @@ const listbooks = (element, data) => {
         form.append(card_image, card_body)
         card.append(form)
         element.append(card)
-
     }
 }
 
@@ -63,7 +58,6 @@ function listBooksRented(element) {
     const booksrents = listBooks()
     const user = listUser()
     const bookR = books
-    console.log(booksrents)
     //array dos livros cadastrados para gerar a lista em html
     for (const book of booksrents) {
         // crio os elementos que vão fazer parte do cartão e suas respectivas propriedades
@@ -93,7 +87,7 @@ function listBooksRented(element) {
         const date_element = document.createElement('small')
         date_element.classList.add('fst-italic')
         date_element.innerHTML = `<i class="fa-solid fa-calendar-days"></i>  ${format(book.data_fim)}`
-        const falt = quant(book.data_aluguel,book.data_fim,)
+        const falt = quant(book.data_aluguel,book.data_fim)
         const sm = document.createElement('p')
         sm.classList.add('fw-lighter')
         sm.innerHTML = `<i class="fa-regular fa-clock"></i> Devolução em ${falt} dias `
@@ -101,7 +95,7 @@ function listBooksRented(element) {
         card_footer.append(sm)
         card_body.append(card_title,card_sub, card_text,date_element)
         card.append(card_image,card_body,card_footer)
-        element.append(card)
+        element.prepend(card)
 
     }
 }

@@ -10,12 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
-
     <title>Home</title>
 </head>
 
 <body>
-
     <div class="container-fluid">
         <div class="row align-items-start">
             <div class="col">
@@ -25,21 +23,14 @@
                     </a>
                     <ul class="nav nav-pills flex-column mb-auto mt-3">
                         <li>
-                            <a href="#" class="nav-item">Livros</a>
+                            <a href="/home.html" class="nav-item">Livros</a>
                         </li>
                         <li>
-                            <a href="#" class="nav-item" id="add-book" data-bs-toggle="modal"
-                                data-bs-target="#add-livro">
-                                Adicionar livro
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-item" id="add-book">
+                            <a href="/livros.html" class="nav-item" id="add-book">
                                 Livros Alugados
                             </a>
                         </li>
                     </ul>
-
                     <hr>
                     <div class="btn-group dropup  align-items-start">
                         <a type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,7 +39,8 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#" class="dropdown-item">Configurações</a>
+                                <a href="#" class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#alterar">Alterar foto do perfil</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" data-bs-toggle="modal" id="log" data-bs-target="#logout">
@@ -60,92 +52,88 @@
                 </div>
             </div>
             <div class="col">
-                <div class="carous">
-                    <div>
-                        <div class="card">
-                                <img src="https://covers.openlibrary.org/b/id/15129598-L.jpg" class="card-img-top w-100" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Harry Potter e o Prisioneiro de Azkaban</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the
-                                        card’s content.</p>
-                                    <div class="card-footer">
-                                         Escrito em 2017
-                                    </div>
-                                    <a href="#" class="btn btn-success">Alugar</a>
+                <h4 class="fw-bolder" id="rent"> Livros Disponíveis <i class="fa-solid fa-book-bookmark"></i></h4>
+                <div class="books"></div>
+
+                <!-- modal para alterar foto perfil -->
+             <div class="modal fade" id="alterar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form id="file_form">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Alterar Foto</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="input-form d-flex justify-content-center" id="input_group">
+                                      <label for="file_perfil" for="file_perfil" class="input-group-text btn btn-primary">
+                                        <i class="fa-solid fa-file-arrow-up"></i> Escolha a foto do perfil 
+                                    </label>
+                                    <input type="file"accept="image/png, image/jpeg" id="file_perfil">
                                 </div>
-                        </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cancelar</button>
+                                <button type="submit" class="btn btn-success">
+                                    Confirmar <i class="fa-solid fa-check"></i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <div>
-                        <div class="card">
-                                <img src="https://covers.openlibrary.org/b/id/15129598-L.jpg" class="card-img-top w-100" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Harry Potter e o Prisioneiro de Azkaban</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the
-                                        card’s content.</p>
-                                    <div class="card-footer">
-                                         Escrito em 2017
-                                    </div>
-                                    <a href="#" class="btn btn-success">Alugar</a>
-                                </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="card">
-                                <img src="https://covers.openlibrary.org/b/id/15129598-L.jpg" class="card-img-top w-100" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Harry Potter e o Prisioneiro de Azkaban</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the
-                                        card’s content.</p>
-                                    <div class="card-footer">
-                                         Escrito em 2017
-                                    </div>
-                                    <a href="#" class="btn btn-success">Alugar</a>
-                                </div>
-                        </div>  
-                    </div>
-                    <div></div>
                 </div>
-                       
+            </div>
+                <!-- modal para alugar livro -->
+                <div class="modal fade" id="add-livro" tabindex="-1">
+                    <span class="id"></span>
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Adicionar Livro</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="input-form d-flex justify-content-center">
+                                        <input type="text" class="form-control w-75" id="name-book" readonly>
+                                    </div>
+                                    <div class="input-form d-flex justify-content-center align-items-center  mb-3">
+                                        <img class="img-thumbnail" id="img_book">
+                                    </div>
+                                    <div class="input-form d-flex justify-content-space-between align-items-center">
+                                        <label for="data-fim mr-3"> Data de Entrega:</label>
+                                        <input type="date" class="form-control w-50" name="data-fim" id="data-fim"
+                                            required>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close <i
+                                        class="fa-solid fa-x"></i></button>
+                                <button type="submit" class="btn btn-success">Adicionar <i
+                                        class="fa-solid fa-check"></i></button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="modal fade" id="add-livro" tabindex="-1">
+        <!-- modal de logout -->
+        <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Adicionar Livro</h5>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Aviso</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
-                            <div class="input-form d-flex justify-content-center">
-                                <input type="search" class="form-control w-75 mb-3" id="search-book"
-                                    placeholder="Digite o nome do livro...">
-                            </div>
-                            <div class="input-form d-flex justify-content-center">
-                                <input type="text" class="form-control w-75" readonly id="name-book">
-                            </div>
-                            <div class="input-form d-flex justify-content-center align-items-center  mb-3">
-                                <img class="img-thumbnail" id="img_book">
-                            </div>
-                            <div class="input-form d-flex justify-content-center">
-                                <input type="date" class="form-control w-75 mb-3" min="16-11-2025" name="data-inicio"
-                                    id="data-inicio" value="11-11-2025" required>
-                            </div>
-                            <div class="input-form d-flex justify-content-center">
-                                <input type="date" class="form-control w-75" name="data-fim" id="data-fim" required>
-                            </div>
-
+                        Deseja realmente sair?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close <i
-                                class="fa-solid fa-x"></i></button>
-                        <button type="submit" class="btn btn-success">Adicionar livro <i
-                                class="fa-solid fa-check"></i></button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cancelar</button>
+                        <button type="button" class="btn btn-success" id="logout_btn">Confirmar</button>
                     </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -155,7 +143,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"></script>
-    <script src="./src/home.js" type="module"></script> 
+    <script src="./src/home.js" type="module"></script>
 </body>
 
 </html>

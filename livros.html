@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./src/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+    <link rel="stylesheet" href="./src/styles/livro.css">
+    <title>Alugados</title>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row align-items-start">
+            <div class="col">
+                <div class="d-flex flex-column flex-shrink text-white" id="sidebar">
+                    <a class="navbar-brand" href="#">
+                        <i class="fa-solid fa-book"></i> Library
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-auto mt-3">
+                        <li>
+                            <a href="/home.html" class="nav-item">Livros</a>
+                        </li>
+                        <li>
+                            <a href="/livros.html" class="nav-item" id="add-book">
+                                Livros Alugados
+                            </a>
+                        </li>
+                    </ul>
+
+                    <hr>
+                    <div class="btn-group dropup  align-items-start">
+                        <a type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="img-fluid img-thumbnail" id="user" alt="user">
+                            <span class="user"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#" class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#alterar">Alterar foto perfil</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logout">
+                                    Logout <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col" id="col_books">
+                <span class="qt">Nenhum livro alugado</span>
+                <div class="rented_books"></div>
+            </div>
+            <!-- modal para alterar foto perfil -->
+            <div class="modal fade" id="alterar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                         <form id="file_form">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Alterar Foto</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="input-form d-flex justify-content-center" id="input_group">
+                                    <label for="file_perfil" for="file_perfil" class="input-group-text btn btn-primary">
+                                        <i class="fa-solid fa-file-arrow-up"></i> Escolha a foto do perfil 
+                                    </label>
+                                    <input type="file" id="file_perfil" required>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cancelar</button>
+                                <button type="submit" class="btn btn-success">
+                                    Confirmar <i class="fa-solid fa-check"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- modal para fazer o logout -->
+            <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Aviso</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Deseja realmente sair?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cancelar</button>
+                            <button type="button" class="btn btn-success" id="logout_btn">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.5.2/jquery-migrate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"></script>
+        <script src="./src/livros.js" type="module"></script>
+</body>
+
+</html>
