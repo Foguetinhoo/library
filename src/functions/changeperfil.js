@@ -7,25 +7,27 @@ const file_perfil = document.querySelector('#file_perfil')
 
 
 const changePerfil = () => {
+    const arr = []
+    // evento para pegar o arquivo toda vez que mudar
+    file_perfil.addEventListener('change', function(event){
+    const file = event.target.files[0]
+      arr.push(file.name)
+         
+    })
     form_foto.addEventListener('submit', function (evt) {
-        if (!(evt.target && evt.target.files && evt.target.files.length > 0)) {
-            return;
+        evt.preventDefault()
+        if(file_perfil.value != ""){
+            const user_local = new StorageL('local').getItem('user')
+            let [user_logg]  = new StorageL('session').getItem('user_logged')
+            const userin  = user_local.map(user => user.id == user_logg.id)
+
+            let { id, name, email, img_user} = userin
+            img_user = `./src/upload/${arr[0]}`
+            const data = { id, name, email, img_user }
+
+            new StorageL('local').saveItem('user', data)
+            new StorageL('session').saveItem('user_logged',data)
         }
-        let new_src = ""
-        var r = new FileReader();
-        // Define o que ocorre quando concluir:
-        r.onload = function () {
-            // Define o `src` do elemento para o resultado:
-            new_src = r.result
-            // Lê o arquivo e cria um link (o resultado vai ser enviado para o onload.
-        }
-        r.readAsDataURL(file_perfil.files[0]);
-        const storage = new StorageL('local')
-        let { id, name, email, img_user } = storage.getItem('user')
-        img_user = new_src
-         console.log(img_user)
-        const data = { id, name, email, img_user }
-        storage.saveItem('user', data)
     })
 }
 
